@@ -14,7 +14,7 @@ const start = async () => {
 
   // filter from the begining of time till 7 days ago.
   const startDate = new Date();
-  startDate.setDate(1);
+  startDate.setMonth(0, 1);
   startDate.setHours(0, 0, 0, 0);
   const endDate = new Date();
   endDate.setDate(endDate.getDate() - 7);

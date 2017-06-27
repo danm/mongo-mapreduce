@@ -1,8 +1,8 @@
 const Mongo = require('./Mongo');
 const mapreduce = require('./reduceDocuments');
-const removeOldDocuments = require('./removeOldDocuments');
-const addReducedDocuments = require('./addReducedDocuments');
-const dropReduceCollection = require('./dropReduceCollection');
+// const removeOldDocuments = require('./removeOldDocuments');
+// const addReducedDocuments = require('./addReducedDocuments');
+// const dropReduceCollection = require('./dropReduceCollection');
 
 const start = async () => {
   // filter for only 1 days - 7 days ago
@@ -14,12 +14,13 @@ const start = async () => {
 
   // filter from the begining of time till 7 days ago.
   const startDate = new Date();
-  startDate.setMonth(0, 1);
+  endDate.setDate(1);
   startDate.setHours(0, 0, 0, 0);
   const endDate = new Date();
-  endDate.setDate(endDate.getDate() - 7);
+  endDate.setDate(25);
   endDate.setHours(0, 0, 0, 0);
-  console.log('started');
+  
+  let db;
   try {
     const db = new Mongo();
     await db.connect();
@@ -31,9 +32,10 @@ const start = async () => {
     console.log('error at');
     console.log(e);
   }
+
   console.log('finsihed');
   process.exit();
 };
 
 start();
-module.exports = start;
+// module.exports = start;

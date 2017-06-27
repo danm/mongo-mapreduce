@@ -71,6 +71,7 @@ const mapper = function() {
       }
     }
   });
+  print(`${this._id} ${newData.length}`);
   if (newData.length > 0) {
     emit(this._id, newData);
   }
@@ -83,8 +84,8 @@ const reducer = function(key, data) {
 const mapreduce = (db, startDate, endDate) => {
   console.log('Started MapReduce');
   const options = {
-    query: { 'analytics.date': { $gt: startDate, $lt: endDate } },
-    out: 'reduceOutput',
+    query: { 'analytics.date': { $gte: startDate, $lt: endDate } },
+    out: 'reduceOutput2',
     scope: {
       startDate,
       endDate,
